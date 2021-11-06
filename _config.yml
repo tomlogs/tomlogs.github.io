@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   document my progress. 
 show_excerpts: true
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "tomlogs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tomiscoding
 github_username:  tomlogs
 
