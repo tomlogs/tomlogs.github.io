@@ -24,9 +24,15 @@ ul, ol { margin-left: 30px; }
 li > ul, li > ol { margin-bottom: 0; }
 
 /** Headings */
-h1, h2, h3, h4, h5, h6 { font-weight: 400; }
+h1, h2, h3, h4, h5, h6 { font-weight: 600; }
 
 /** Links */
+.post-link { color: black; }
+
+.post-link:hover { color: black; }
+
+.post-link:visited { color: black; }
+
 a { color: #2a7ae2; text-decoration: none; }
 
 a:visited { color: #1756a9; }
@@ -52,7 +58,7 @@ pre { padding: 8px 12px; overflow-x: auto; }
 pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 /** Wrapper */
-.wrapper { max-width: -webkit-calc(800px - (30px * 2)); max-width: calc(800px - (30px * 2)); margin-right: auto; margin-left: auto; padding-right: 30px; padding-left: 30px; }
+.wrapper { max-width: 66.875em; margin-right: auto; margin-left: auto; padding-right: 30px; padding-left: 30px; }
 
 @media screen and (max-width: 800px) { .wrapper { max-width: -webkit-calc(800px - (30px)); max-width: calc(800px - (30px)); padding-right: 15px; padding-left: 15px; } }
 
@@ -78,7 +84,7 @@ table td { border: 1px solid #e8e8e8; }
 /** Custom Styling */
 .home { display: flex; }
 
-.sidebar { padding: 0 2em; max-width: 16em; }
+.sidebar { padding: 0 2em; max-width: 17em; }
 
 .sidebar-contents { padding-right: 2em; border-right: 1px solid #e6e6e6; }
 
@@ -86,7 +92,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .personal-picture { width: 6em; height: 6em; object-fit: cover; border-radius: 50%; }
 
-.title { font-weight: 600; color: #222; }
+.title { font-weight: 600; font-size: 1.25em; color: #222; }
 
 .description { color: #7c7c7c; }
 
@@ -133,7 +139,7 @@ table td { border: 1px solid #e8e8e8; }
 @media screen and (max-width: 600px) { .footer-col { float: none; width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 
 /** Page content */
-.page-content { padding: 30px 0; flex: 1; }
+.page-content { padding: 3em 0; flex: 1; }
 
 .page-heading { font-size: 32px; }
 
@@ -150,7 +156,7 @@ table td { border: 1px solid #e8e8e8; }
 /** Posts */
 .post-header { margin-bottom: 30px; }
 
-.post-title { font-size: 42px; letter-spacing: -1px; line-height: 1; }
+.post-title { font-size: 42px; line-height: 1; }
 
 @media screen and (max-width: 800px) { .post-title { font-size: 36px; } }
 

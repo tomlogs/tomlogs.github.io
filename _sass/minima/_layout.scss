@@ -8,7 +8,7 @@
 
 .sidebar {
   padding: 0 2em;
-  max-width: 16em;
+  max-width: 17em;
 }
 
 .sidebar-contents {
@@ -29,6 +29,7 @@
 
 .title {
   font-weight: 600;
+  font-size: 1.25em;
   color: #222;
 }
 
@@ -219,7 +220,7 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
+  padding: 3em 0;
   flex: 1;
 }
 
@@ -261,7 +262,6 @@
 
 .post-title {
   @include relative-font-size(2.625);
-  letter-spacing: -1px;
   line-height: 1;
 
   @include media-query($on-laptop) {

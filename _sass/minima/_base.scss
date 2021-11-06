@@ -94,7 +94,7 @@ li {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: $base-font-weight;
+  font-weight: 600;
 }
 
 
@@ -102,6 +102,19 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * Links
  */
+
+.post-link {
+  color: black;
+}
+
+.post-link:hover {
+  color: black;
+}
+
+.post-link:visited {
+  color: black;
+}
+
 a {
   color: $brand-color;
   text-decoration: none;
@@ -175,8 +188,9 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width: 66.875em;
+  // max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+  // max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: $spacing-unit;
