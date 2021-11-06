@@ -5,25 +5,27 @@ layout: default
 <div class="home">
   <div class="sidebar">
     <div class="sidebar-contents">
-      <div>
+      <div style="height: 6em; width: 6em; padding-right: 2em;">
         <image src="/assets/picture.png" alt="a picture of me" class="personal-picture" />
       </div>
-      <div class="title">
-        {{ site.title }}
+      <div class="sidebar-content-container">
+        <div class="title">
+          {{ site.title }}
+        </div>
+        <div class="description">
+          {{ site.description }}
+        </div>
+    
+        <div class="social-links">
+          {%- include social_notext.html -%}
+        </div>
+              
+
+    
       </div>
-      <div class="description">
-        {{ site.description }}
-      </div>
-  
-      <div class="social-links">
-        {%- include social.html -%}
-      </div>
-  
       
-      <div class="copyright">
-        © All rights reserved.
-      </div>
   
+
       <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
     </div>
 
@@ -53,6 +55,9 @@ layout: default
 
       <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
     {%- endif -%}
+    <div class="copyright">
+      © All rights reserved.
+    </div>
   </div>
 
 
