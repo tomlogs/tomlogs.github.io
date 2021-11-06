@@ -22,6 +22,7 @@ title: TomLogs
 description: >- # this means to ignore newlines until "baseurl:"
   Hi, I'm Tom. I'm logging my learning and projects to share and
   document my progress. 
+show_excerpts: true
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tomiscoding

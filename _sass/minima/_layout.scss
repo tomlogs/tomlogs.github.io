@@ -1,4 +1,47 @@
 /**
+ * Custom Styling
+ */
+
+.home {
+  display: flex;
+}
+
+.sidebar {
+  padding: 0 2em;
+  max-width: 16em;
+}
+
+.sidebar-contents {
+  padding-right: 2em;
+  border-right: 1px solid #e6e6e6;
+}
+
+.sidebar-contents div {
+  margin-bottom: 1em;
+}
+
+.personal-picture {
+  width: 6em;
+  height: 6em;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.title {
+  font-weight: 600;
+  color: #222;
+}
+
+.description {
+  color: rgb(124, 124, 124) ;
+}
+
+.copyright {
+  color: #b6b6b6;
+  font-size: 14px;
+}
+
+/**
  * Site header
  */
 .site-header {
