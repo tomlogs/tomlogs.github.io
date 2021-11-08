@@ -1,9 +1,22 @@
-<header class="site-header" role="banner">
+<header role="banner">
 
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    
+    <a href="{{ "/" | relative_url }}">
+      <div class="menu-return-container">
+        <div style="padding-right: 0.8em; line-height: 1em;">
+          <span class="chevron left"></span>
+        </div>
+        <div class="menu-return-image">
+          <image src="/assets/picture.png" alt="a picture of me" style="border-radius: 50%;" />
+        </div>
+        <div class="title">
+          {{ site.title }}
+        </div>
+      </div>
+    </a>
 
     <!-- {%- if page_paths -%}
       <nav class="site-nav">

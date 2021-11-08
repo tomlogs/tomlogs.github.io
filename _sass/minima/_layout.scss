@@ -2,6 +2,46 @@
  * Custom Styling
  */
 
+.post {
+  margin: auto;
+  max-width: 44em;
+}
+
+.chevron::before {
+  color: black;
+	border-style: solid;
+	border-width: 0.15em 0.15em 0 0;
+	content: '';
+	display: inline-block;
+	height: 0.45em;
+	left: 0.15em;
+	position: relative;
+	top: 0.15em;
+	transform: rotate(-45deg);
+	vertical-align: top;
+	width: 0.45em;
+}
+.chevron.left:before {
+	left: 0.25em;
+	transform: rotate(-135deg);
+}
+
+.menu-return-container {
+  display: flex; 
+  align-items: center; 
+  padding: 0.5em 0.6em; 
+  margin: 1em 0 -1em 0; 
+  border: 1px solid lightgrey; 
+  border-radius: 40px;
+  max-width: 14em;
+}
+
+.menu-return-image {
+  height: 2em;
+  width: 2em; 
+  padding-right: 0.5em;
+}
+
 .social-media-list-notext {
   list-style: none;
   display: flex;
@@ -250,6 +290,7 @@
 /**
  * Page content
  */
+
 .page-content {
   padding: 3em 0;
   flex: 1;
