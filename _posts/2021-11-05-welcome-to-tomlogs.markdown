@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Welcome to TomLogs"
+permalink: "welcome-to-tomlogs"
 date:   2021-11-05 23:02:06 -0400
 ---
 
