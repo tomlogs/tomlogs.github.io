@@ -34,4 +34,4 @@ For the moment, the second endpoint will display the filenames of the uploaded f
 
 ### Create a Blob Storage resource in Azure
 
-We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we opt to store files in Azure Blob Storage. 
+We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we will be storing the in Azure Blob Storage. 
