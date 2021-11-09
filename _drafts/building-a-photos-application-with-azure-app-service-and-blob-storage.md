@@ -20,8 +20,6 @@ Prerequisites:
 * Python 3.8.5 ([https://www.python.org/downloads/](https://www.python.org/downloads/ "https://www.python.org/downloads/"))
 * Flask 1.1.2 ([https://flask.palletsprojects.com/en/2.0.x/](https://flask.palletsprojects.com/en/2.0.x/ "Flask"))
 
-1. Create the web application
-
 ## Create the Web Application
 
 ### Create a form upload to upload photos
@@ -33,3 +31,7 @@ We'll start off by creating a simple Flask application with an upload form. This
 For the moment, the second endpoint will display the filenames of the uploaded files when they are submitted. This will indicate that the form is working as expected.
 
 ![](/uploads/screenshot-2021-11-08-212424.png)
+
+### Create a Blob Storage resource in Azure
+
+We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we opt to store files in Azure Blob Storage. 
