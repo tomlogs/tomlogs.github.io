@@ -22,6 +22,10 @@ Prerequisites:
 
 1. Create the web application
 
+## Create the Web Application
+
+### Create a form upload to upload photos
+
 We'll start off by creating a simple Flask application with an upload form. This is where we will be uploading our pictures. The first endpoint will have a "/" route.  This endpoint will return HTML with a form to upload photos. (Eventually, we will display the uploaded pictures on this page). We'll define the second endpoint as having the route "/upload-photos" and expecting a POST request.
 
 ![Web Application (left) and source code (right)](/uploads/screenshot-2021-11-08-212154.png "Form Upload for Photos")
