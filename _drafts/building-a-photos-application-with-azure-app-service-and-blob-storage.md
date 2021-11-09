@@ -36,4 +36,4 @@ For the moment, the second endpoint will display the filenames of the uploaded f
 
 We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we will be storing the in Azure Blob Storage. 
 
-We'll create a Storage Account through the Azure Portal.
+We'll create a Storage Account through the Azure Portal. We first create a resource group, which will contain all the resources that we need for this project.
