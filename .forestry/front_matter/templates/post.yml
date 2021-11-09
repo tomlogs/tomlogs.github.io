@@ -14,3 +14,5 @@ fields:
 - type: datetime
   name: date
   label: date
+pages:
+- _posts/building-a-photos-application-with-azure-app-service-and-blob-storage.md
