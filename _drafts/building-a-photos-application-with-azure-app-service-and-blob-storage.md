@@ -62,4 +62,18 @@ For the moment, the second endpoint will display the filenames of the uploaded f
 
 We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we will be storing the in Azure Blob Storage.
 
-We'll create a Storage Account through the Azure Portal. We first create a resource group, which will contain all the resources that we need for this project.
+We first create a resource group, which will contain all the resources that we need for this project. The resource group name will be "photos-app" and we'll select the East US region, although any region will work.
+
+![](/uploads/screenshot-2021-11-08-230918.png)
+
+After reviewing and creating the resource group, we can create the first resource that we'll need, the Storage account. To create a new storage account, search for "Storage accounts" and create a new resource. In the storage account creation form, we'll make sure to select the same subscription and we'll select the resource group we just created. This is what my configurations look like:
+
+* Resource group: photos-app
+* Storage account name: photosappstoragepost
+* Region: East US
+* Performance: Standard
+* Redundancy: Locally Redundant Storage 
+
+![](/uploads/screenshot-2021-11-08-231432.png)
+
+We can now review and create the storage account.
