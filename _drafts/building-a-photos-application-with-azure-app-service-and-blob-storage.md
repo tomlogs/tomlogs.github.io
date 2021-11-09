@@ -26,4 +26,6 @@ We'll start off by creating a simple Flask application with an upload form. This
 
 ![Web Application (left) and source code (right)](/uploads/screenshot-2021-11-08-212154.png "Form Upload for Photos")
 
-For the moment, the second endpoint will display the filenames of the uploaded files when they are submitted. This will indicate that the form is working as expected
+For the moment, the second endpoint will display the filenames of the uploaded files when they are submitted. This will indicate that the form is working as expected.
+
+![](/uploads/screenshot-2021-11-08-212424.png)
