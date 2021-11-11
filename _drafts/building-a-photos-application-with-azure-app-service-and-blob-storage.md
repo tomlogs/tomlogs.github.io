@@ -7,7 +7,7 @@ date: 2021-11-09 01:33:00 +0000
 ---
 Photos are precious: they encapsulate memories, and looking at them brings joy. It makes sense to want to back them up on a web application. This would also make it easy to view and share pictures on any device, since the application would be accessible through any web browser.
 
-In this blog post, we are going to build a Python web application from scratch, using the Flask framework and we will use Azure App Service and Azure Blob Storage to host our application and store our pictures. Specifically, the application will let us upload images, view the images and delete any image. Let's get started!
+In this blog post, we are going to build a Python web application from scratch, using the Flask framework and we will use Azure App Service and Azure Blob Storage to host our application and store our pictures. Specifically, the application will let us upload images, view the images, and delete any image. Let's get started!
 
 Table of contents:
 
@@ -49,8 +49,6 @@ We'll start off by creating a simple Flask application with an upload form. This
             filenames += file.filename + " "
     
         return "<p>Uploaded: {}</p>".format(filenames)        
-    
-    
 
 ![Web Application (left) and source code (right)](/uploads/screenshot-2021-11-08-212154.png "Form Upload for Photos")
 
@@ -72,7 +70,7 @@ After reviewing and creating the resource group, we can create the first resourc
 * Storage account name: photosappstoragepost
 * Region: East US
 * Performance: Standard
-* Redundancy: Locally Redundant Storage 
+* Redundancy: Locally Redundant Storage
 
 ![](/uploads/screenshot-2021-11-08-231432.png)
 
