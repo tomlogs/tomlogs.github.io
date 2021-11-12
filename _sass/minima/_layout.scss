@@ -334,7 +334,7 @@
 
 .post-title {
   @include relative-font-size(2.625);
-  line-height: 1;
+  line-height: 1.3;
 
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
