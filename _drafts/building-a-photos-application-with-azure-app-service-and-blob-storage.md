@@ -80,6 +80,6 @@ We can now review and create the storage account.
 
 We'll be using the Azure Storage Blob Python SDK in order to interact with the Blob Storage from the Flask App.
 
-First, we'll need to get our Blob Storage credentials from the portal. These keys will allow us to access these resources securely. From the Azure Portal Home, click All Resources. You should see the storage account photosappstoragepost. From there, you can find the keys in the left sidebar, under the section Security + Networking.
+First, we'll need to get our Blob Storage credentials from the portal. These keys will allow us to access these resources securely. From the **Azure Portal Home**, click **All Resources**. You should see the **storage account photosappstoragepost**. Select **Access Keys** in the section **Security + Networking**. 
 
 Click show keys, and copy the key.
