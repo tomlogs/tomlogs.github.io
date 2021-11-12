@@ -23,7 +23,7 @@ In cmd, paste the following, replacing NAME-OF-ENV-VARIABLE with a name for the 
 
     setx NAME-OF-ENV-VARIABLE "VALUE-OF-ENV-VARIABLE"
 
-You could use keyword 'set' instead of 'setx'. As per [this StackOverflow response](https://superuser.com/questions/916649/what-is-the-difference-between-setx-and-set-in-environment-variables-in-windows "What is the difference between SETX and SET in environment variables in Windows"), 'set' will set the environment variable for the current cmd session, whereas 'setx' will modify permanently. 
+You could use keyword 'set' instead of 'setx'. As per [this StackOverflow response](https://superuser.com/questions/916649/what-is-the-difference-between-setx-and-set-in-environment-variables-in-windows "What is the difference between SETX and SET in environment variables in Windows"), 'set' will set the environment variable for the current cmd session, whereas 'setx' will modify permanently.
 
 ### Linux/macOS
 
@@ -37,6 +37,6 @@ It's quite easy to access the environment variables in your code after that! It'
 
 In my case, I'm working in Python at the moment so I can access the environment variable this way:
 
-    env_variable = os.environ['NAME-OF-ENV-VARIABLE']
+    env_variable = os.getenv('NAME-OF-ENV-VARIABLE')
 
 All in all, using environment variables earlier in your development process is very easy, and you won't have to change your code once you deploy your application if you plan on using environment variables.
