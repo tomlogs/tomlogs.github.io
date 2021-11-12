@@ -16,3 +16,4 @@ fields:
   label: date
 pages:
 - _posts/building-a-photos-application-with-azure-app-service-and-blob-storage.md
+- _posts/how-to-store-environment-variables-for-local-development.md
