@@ -5,7 +5,9 @@ permalink: how-to-store-env-variables-for-local-development
 date: 2021-11-12 01:07:00 +0000
 
 ---
-Have you ever received an alert from GitHub indicating that you've uploaded a secret to your public repository? Usually, this happens when we are developing an application and push our code without being careful enough.
+_Storing environment variables locally rather than in the code can prevent an unsecure exposure of your access keys, and it's quite easy to do!_
+
+Have you ever received an alert from GitHub indicating that you've uploaded a secret to your public repository? Usually, this happens when we are developing an application and push our code while our secrets are still in the code. 
 
 ![Managing alerts from secret scanning - GitHub Docs](https://docs.github.com/assets/images/help/repository/secret-scanning-resolve-alert-ghe.png "GitHub secret scanning warning")
 
