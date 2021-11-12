@@ -115,7 +115,7 @@ In the code, we'll add the functionality to store the uploaded pictures. We'll f
 
 We'll retrieve the Azure Blob Storage connection string from the environment variables, which we will need to pass in to use the Azure Blob Storage client library. We'll also set a container name.
 
-Then, we'll retrieve the Blob Service Client, which will allow us to interact with the storage account. 
+Then, we'll retrieve the Blob Service Client, which will allow us to interact with the storage account.
 
 From the Blob Service Client, we'll retrieve a Container Client, with which we will be able to store our images.
 
@@ -125,12 +125,13 @@ From the Blob Service Client, we'll retrieve a Container Client, with which we w
     blob_service_client = BlobServiceClient.from_connection_string(conn_str=connect_str) # create a blob service client to interact with the storage account
     try:
         container_client = blob_service_client.get_container_client(container=container_name) # get container client to interact with the container in which images will be stored
-    except:
+        container_client.get_container_properties() # get properties of the container to force exception to be thrown if container does not exist
+    except Exception as e:
         container_client = blob_service_client.create_container(container_name) # create a container in the storage account if it does not exist
+    
 
 We'll also adjust the **/upload-photos** endpoint to upload the file to the Storage Container. We wrap the call in a try block in order to catch and ignore exceptions thrown when a duplicate filename upload is attempted.
 
-    
     #flask endpoint to upload a photo
     @app.route("/upload-photos", methods=["POST"])
     def upload_photos():
@@ -140,7 +141,15 @@ We'll also adjust the **/upload-photos** endpoint to upload the file to the Stor
             try:
                 container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
                 filenames += file.filename + "<br /> "
-            except:
+            except Exception as e:
+                print(e)
                 print("Ignoring duplicate filenames") # ignore duplicate filenames
             
         return "<p>Uploaded: <br />{}</p>".format(filenames)        
+    
+
+### Checkpoint: Let's verify that file uploads are working
+
+With this new code, we should be able to see the code working and uploading the images to the portal.
+
+Let's start the Flask application again ('flask run'). Then, we navigate to **localhost:5000** in the browser. Let's upload a couple of files. After clicking submit,
