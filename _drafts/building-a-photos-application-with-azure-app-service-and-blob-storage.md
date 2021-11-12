@@ -152,4 +152,14 @@ We'll also adjust the **/upload-photos** endpoint to upload the file to the Stor
 
 With this new code, we should be able to see the code working and uploading the images to the portal.
 
-Let's start the Flask application again ('flask run'). Then, we navigate to **localhost:5000** in the browser. Let's upload a couple of files. After clicking submit,
+Let's start the Flask application again ('flask run'). Then, we navigate to **localhost:5000** in the browser. Let's upload a couple of files. After clicking submit, we'll get redirected to the page indicating the filenames of the uploaded files. 
+
+![](/uploads/screenshot-2021-11-11-213950.png)
+
+In the portal, we can also confirm that the photos were uploaded to a container. In the Storage Account "photosappstoragepost", we can access the containers in the left sidebar under the section "Data Storage". 
+
+![](/uploads/screenshot-2021-11-11-214228.png)
+
+Clicking into the container, we can see the images that have been uploaded. We could also download the images from here to confirm.
+
+![](/uploads/screenshot-2021-11-11-214331.png)
