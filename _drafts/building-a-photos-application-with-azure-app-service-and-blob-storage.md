@@ -90,19 +90,15 @@ We'll be storing the connection string as an environment variable locally,[ as i
 
 ##### Windows
 
-In cmd, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied. 
+In cmd, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied.
 
-    setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
-
-Restart you cmd for the environment variable to take effect.
+    set AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 
 ##### Linux/macOS
 
 In bash/terminal, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied.
 
     export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
-
-Restart you bash/terminal for the environment variable to take effect.
 
 #### Install the Azure Blob Storage Python package
 
@@ -116,4 +112,4 @@ In the code, we'll add the functionality to store the uploaded pictures. We'll f
 
     from azure.storage.blob import BlobServiceClient
 
-In the **/upload-photos** endpoint, we'll adjust the code to add the upload logic. We'll retrieve the Azure Blob Storage connection string, which we will need to pass in to use the Azure Blob Storage client library. 
+In the **/upload-photos** endpoint, we'll adjust the code to add the upload logic. We'll retrieve the Azure Blob Storage connection string, which we will need to pass in to use the Azure Blob Storage client library.
