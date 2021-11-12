@@ -2,7 +2,7 @@
 layout: post
 title: Building a photos application in Python with Azure App Service and Blob Storage
 permalink: build-a-photos-application-with-azure-app-service-and-blob-storage
-date: 2021-11-13 01:33:00 +0000
+date: 2021-11-13T01:33:00.000+00:00
 
 ---
 Photos are precious: they encapsulate memories, and looking at them brings joy. It makes sense to want to back them up on a web application. This would also make it easy to view and share pictures on any device, since the application would be accessible through any web browser.
@@ -168,7 +168,7 @@ Great! Everything seems to be working well, and photos can be uploaded from our 
 
 ### Enable access to photos
 
-We'll now focus on implementing the logic to view photos on the application. First, we'll change the access level of our Storage Container in the Azure Portal to the Blob level. This will allow our web application to display the photos, as the URL to our pictures will now be accessible. 
+We'll now focus on implementing the logic to view photos on the application. First, we'll change the access level of our Storage Container in the Azure Portal to the Blob level. This will allow our web application to display the photos, as the URL to our pictures will now be accessible.
 
 To do so, access the 'photosappstoragepost' Storage Account from All Resources.  Then, access the containers in the left sidebar in the 'Data Storage' section. Click into the 'photos' container. Now, on the top bar, we can change the access level to 'Blob'.
 
