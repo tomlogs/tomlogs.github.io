@@ -82,8 +82,20 @@ We'll be using the Azure Storage Blob Python SDK in order to interact with the B
 
 #### Retrieve Blob Storage keys from the Azure Portal
 
-First, we'll need to get our Blob Storage credentials from the portal. These keys will allow us to access these resources securely. From the **Azure Portal Home**, click **All Resources**. You should see the **storage account photosappstoragepost**. Select **Access Keys** in the section **Security + Networking**. Click show keys, and copy the **connection string** in the section **key 1**. 
+First, we'll need to get our Blob Storage credentials from the portal. These keys will allow us to access these resources securely. From the **Azure Portal Home**, click **All Resources**. You should see the **storage account photosappstoragepost**. Select **Access Keys** in the section **Security + Networking**. Click show keys, and copy the **connection string** in the section **key 1**.
 
-#### Store Blob Storage Connection String as an environment variable. 
+#### Store Blob Storage Connection String as an environment variable.
 
-We'll be storing the connection string as an environment variable locally, as it is more secure than storing it in the code.
+We'll be storing the connection string as an environment variable locally,[ as it is more secure than storing it in the code](). 
+
+##### Windows
+
+In cmd, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied. 
+
+    setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
+
+##### Linux/macOS
+
+In bash/terminal, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied. 
+
+    export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
