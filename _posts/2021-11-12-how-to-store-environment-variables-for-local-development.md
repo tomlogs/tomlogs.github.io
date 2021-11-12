@@ -5,9 +5,9 @@ permalink: how-to-store-env-variables-for-local-development
 date: 2021-11-12 01:07:00 +0000
 
 ---
-![Managing alerts from secret scanning - GitHub Docs](https://docs.github.com/assets/images/help/repository/secret-scanning-resolve-alert-ghe.png)
+Have you ever received an alert from GitHub indicating that you've uploaded a secret to your public repository? Usually, this happens when we are developing an application and push our code without being careful enough.
 
-Have you ever received an alert from GitHub indicating that you've uploaded a secret to your public repository? Usually, this happens when we are developing an application and push our code without being careful enough. 
+![Managing alerts from secret scanning - GitHub Docs](https://docs.github.com/assets/images/help/repository/secret-scanning-resolve-alert-ghe.png "GitHub secret scanning warning")
 
 When we push secrets to our public repositories, these secrets become accessible by anyone in the world! Anyone could decide to steal these keys and access your resources. This could result in them accessing your private data or unauthorized utilization of your resources.
 
@@ -29,7 +29,7 @@ In bash/terminal, paste the following, replacing NAME-OF-ENV-VARIABLE with a nam
 
 ## Accessing the Environment Variables in your code
 
-It's quite easy to access the environment variables in your code after that! It'll depend on the language that your are coding is, so your best bet is to check the official documentation. 
+It's quite easy to access the environment variables in your code after that! It'll depend on the language that your are coding is, so your best bet is to check the official documentation.
 
 In my case, I'm working in Python at the moment so I can access the environment variable this way:
 
