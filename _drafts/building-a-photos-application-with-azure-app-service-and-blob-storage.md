@@ -60,7 +60,7 @@ For the moment, the second endpoint will display the filenames of the uploaded f
 
 We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we will be storing the in Azure Blob Storage.
 
-We first create a resource group, which will contain all the resources that we need for this project. The resource group name will be "photos-app" and we'll select the East US region, although any region will work.
+We first create a **resource group**, which will contain all the resources that we need for this project. The resource group name will be "photos-app" and we'll select the East US region, although any region will work.
 
 ![](/uploads/screenshot-2021-11-08-230918.png)
 
@@ -82,7 +82,7 @@ We'll be using the Azure Storage Blob Python SDK in order to interact with the B
 
 #### Retrieve Blob Storage keys from the Azure Portal
 
-First, we'll need to get our Blob Storage credentials from the portal. These keys will allow us to access these resources securely. From the **Azure Portal Home**, click **All Resources**. You should see the **storage account photosappstoragepost**. Select **Access Keys** in the section **Security + Networking**. Click show keys, and copy the **connection string** in the section **key 1**.
+First, we'll need to get our Blob Storage credentials from the portal. These keys will allow us to access these resources securely. From the **Azure Portal Home**, click **All Resources**. You should see the **storage account** "photosappstoragepost". Select **Access Keys** in the section **Security + Networking**. Click show keys, and copy the **connection string** in the section **key 1**.
 
 #### Store Blob Storage Connection String as an environment variable.
 
@@ -108,8 +108,39 @@ In our cmd/terminal, we'll install the Azure Blob Storage client library. This w
 
 #### Store Images in Blob Storage from the Flask app
 
-In the code, we'll add the functionality to store the uploaded pictures. We'll first start by importing the Azure Blob Storage library at the top of the file.
+In the code, we'll add the functionality to store the uploaded pictures. We'll first start by importing the Azure Blob Storage library and the os package at the top of the file.
 
+    import os
     from azure.storage.blob import BlobServiceClient
 
-In the **/upload-photos** endpoint, we'll adjust the code to add the upload logic. We'll retrieve the Azure Blob Storage connection string, which we will need to pass in to use the Azure Blob Storage client library.
+We'll retrieve the Azure Blob Storage connection string from the environment variables, which we will need to pass in to use the Azure Blob Storage client library. We'll also set a container name.
+
+Then, we'll retrieve the Blob Service Client, which will allow us to interact with the storage account. 
+
+From the Blob Service Client, we'll retrieve a Container Client, with which we will be able to store our images.
+
+    connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING') # retrieve the connection string from the environment variable
+    container_name = "photos" # container name in which images will be store in the storage account
+    
+    blob_service_client = BlobServiceClient.from_connection_string(conn_str=connect_str) # create a blob service client to interact with the storage account
+    try:
+        container_client = blob_service_client.get_container_client(container=container_name) # get container client to interact with the container in which images will be stored
+    except:
+        container_client = blob_service_client.create_container(container_name) # create a container in the storage account if it does not exist
+
+We'll also adjust the **/upload-photos** endpoint to upload the file to the Storage Container. We wrap the call in a try block in order to catch and ignore exceptions thrown when a duplicate filename upload is attempted.
+
+    
+    #flask endpoint to upload a photo
+    @app.route("/upload-photos", methods=["POST"])
+    def upload_photos():
+        filenames = ""
+    
+        for file in request.files.getlist("photos"):
+            try:
+                container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
+                filenames += file.filename + "<br /> "
+            except:
+                print("Ignoring duplicate filenames") # ignore duplicate filenames
+            
+        return "<p>Uploaded: <br />{}</p>".format(filenames)        
