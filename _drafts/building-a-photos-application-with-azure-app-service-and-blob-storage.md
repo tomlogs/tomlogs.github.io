@@ -86,7 +86,7 @@ First, we'll need to get our Blob Storage credentials from the portal. These key
 
 #### Store Blob Storage Connection String as an environment variable.
 
-We'll be storing the connection string as an environment variable locally,[ as it is more secure than storing it in the code](). 
+We'll be storing the connection string as an environment variable locally,[ as it is more secure than storing it in the code]().
 
 ##### Windows
 
@@ -94,8 +94,14 @@ In cmd, copy and paste the following and substitute **<yourconnectionstring>** w
 
     setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 
+Restart you cmd for the environment variable to take effect.
+
 ##### Linux/macOS
 
-In bash/terminal, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied. 
+In bash/terminal, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied.
 
     export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+
+Restart you bash/terminal for the environment variable to take effect.
+
+#### Store Images in Blob Storage from Flask app
