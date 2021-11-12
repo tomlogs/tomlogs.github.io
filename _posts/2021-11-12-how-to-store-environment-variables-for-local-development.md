@@ -7,7 +7,7 @@ date: 2021-11-12 01:07:00 +0000
 ---
 Storing environment variables locally rather than in the code can prevent an unsecure exposure of your access keys, and it's quite easy to do!
 
-Have you ever received an alert from GitHub indicating that you've uploaded a secret to your public repository? Usually, this happens when we are developing an application and push our code while our secrets are still in the code. 
+Have you ever received an alert from GitHub indicating that you've uploaded a secret to your public repository? Usually, this happens when we are developing an application and push our code while our secrets are still in the code.
 
 ![Managing alerts from secret scanning - GitHub Docs](https://docs.github.com/assets/images/help/repository/secret-scanning-resolve-alert-ghe.png "GitHub secret scanning warning")
 
@@ -22,6 +22,8 @@ In order to avoid this, it's best to start using environment variables early on 
 In cmd, paste the following, replacing NAME-OF-ENV-VARIABLE with a name for the environment variable and VALUE-OF-ENV-VARIABLE with the value of your environment variable (such as an access key).
 
     setx NAME-OF-ENV-VARIABLE "VALUE-OF-ENV-VARIABLE"
+
+You could use keyword 'set' instead of 'setx'. As per [this StackOverflow response](https://superuser.com/questions/916649/what-is-the-difference-between-setx-and-set-in-environment-variables-in-windows "What is the difference between SETX and SET in environment variables in Windows"), 'set' will set the environment variable for the current cmd session, whereas 'setx' will modify permanently. 
 
 ### Linux/macOS
 
