@@ -75,3 +75,7 @@ After reviewing and creating the resource group, we can create the first resourc
 ![](/uploads/screenshot-2021-11-08-231432.png)
 
 We can now review and create the storage account.
+
+### Store photos in Blob Storage from the Flask App upon upload
+
+We'll be using the Azure Storage Blob Python SDK in order to interact 
