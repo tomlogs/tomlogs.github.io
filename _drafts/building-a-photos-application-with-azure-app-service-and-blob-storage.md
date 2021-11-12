@@ -207,3 +207,30 @@ Now that we have added the code to access the files from the application, let's 
 ![](/uploads/screenshot-2021-11-11-231613.png)
 
 We can now see our images in our web application!
+
+### Redirect to the home page after upload \[Optional\]
+
+One optional improvement is to make the form redirect to the home page after uploading new pictures! This can be easily implemented with very few code changes.
+
+First, we'll import the redirect package from flask
+
+    from flask import Flask, request, redirect
+
+Then, we'll change the last line of the upload_photos() function as such:
+
+    #flask endpoint to upload a photo
+    @app.route("/upload-photos", methods=["POST"])
+    def upload_photos():
+        filenames = ""
+    
+        for file in request.files.getlist("photos"):
+            try:
+                container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
+                filenames += file.filename + "<br /> "
+            except Exception as e:
+                print(e)
+                print("Ignoring duplicate filenames") # ignore duplicate filenames
+            
+        return redirect('/')     
+
+This will make the application redirect to the initial page after upload.
