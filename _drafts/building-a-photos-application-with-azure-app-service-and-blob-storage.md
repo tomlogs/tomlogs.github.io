@@ -20,7 +20,7 @@ Prerequisites:
 * Python 3.8.5 ([https://www.python.org/downloads/](https://www.python.org/downloads/ "https://www.python.org/downloads/"))
 * Flask 1.1.2 ([https://flask.palletsprojects.com/en/2.0.x/](https://flask.palletsprojects.com/en/2.0.x/ "Flask"))
 
-## Create the Web Application
+## Part 1: Upload photos
 
 ### Create a form upload to upload photos
 
@@ -58,7 +58,7 @@ For the moment, the second endpoint will display the filenames of the uploaded f
 
 ### Create a Blob Storage resource in Azure
 
-We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we will be storing the in Azure Blob Storage.
+We now have to store the uploaded photos. While we could store the uploaded photo files locally, this would occupy a lot of space on our server. Instead, we will be storing the in Azure Blob Storage. A blob is any form of unstructured data, so an image fits the description!
 
 We first create a **resource group**, which will contain all the resources that we need for this project. The resource group name will be "photos-app" and we'll select the East US region, although any region will work.
 
@@ -128,7 +128,6 @@ From the Blob Service Client, we'll retrieve a Container Client, with which we w
         container_client.get_container_properties() # get properties of the container to force exception to be thrown if container does not exist
     except Exception as e:
         container_client = blob_service_client.create_container(container_name) # create a container in the storage account if it does not exist
-    
 
 We'll also adjust the **/upload-photos** endpoint to upload the file to the Storage Container. We wrap the call in a try block in order to catch and ignore exceptions thrown when a duplicate filename upload is attempted.
 
@@ -146,20 +145,57 @@ We'll also adjust the **/upload-photos** endpoint to upload the file to the Stor
                 print("Ignoring duplicate filenames") # ignore duplicate filenames
             
         return "<p>Uploaded: <br />{}</p>".format(filenames)        
-    
 
 ### Checkpoint: Let's verify that file uploads are working
 
 With this new code, we should be able to see the code working and uploading the images to the portal.
 
-Let's start the Flask application again ('flask run'). Then, we navigate to **localhost:5000** in the browser. Let's upload a couple of files. After clicking submit, we'll get redirected to the page indicating the filenames of the uploaded files. 
+Let's start the Flask application again ('flask run'). Then, we navigate to **localhost:5000** in the browser. Let's upload a couple of files. After clicking submit, we'll get redirected to the page indicating the filenames of the uploaded files.
 
 ![](/uploads/screenshot-2021-11-11-213950.png)
 
-In the portal, we can also confirm that the photos were uploaded to a container. In the Storage Account "photosappstoragepost", we can access the containers in the left sidebar under the section "Data Storage". 
+In the portal, we can also confirm that the photos were uploaded to a container. In the Storage Account "photosappstoragepost", we can access the containers in the left sidebar under the section "Data Storage".
 
 ![](/uploads/screenshot-2021-11-11-214228.png)
 
 Clicking into the container, we can see the images that have been uploaded. We could also download the images from here to confirm.
 
 ![](/uploads/screenshot-2021-11-11-214331.png)
+
+Great! Everything seems to be working well, and photos can be uploaded from our Flask application!
+
+## Part 2: View Photos
+
+### Enable access to photos
+
+We'll now focus on implementing the logic to view photos on the application. First, we'll change the access level of our Storage Container in the Azure Portal to the Blob level. This will allow our web application to display the photos, as the URL to our pictures will now be accessible. 
+
+To do so, access the 'photosappstoragepost' Storage Account from All Resources.  Then, access the containers in the left sidebar in the 'Data Storage' section. Click into the 'photos' container. Now, on the top bar, we can change the access level to 'Blob'.
+
+![](/uploads/screenshot-2021-11-11-230527.png)
+
+### Access photos from code and display in HTML
+
+We'll now change the "/" endpoint, in the function view_photos(). We'll use our container client in order to get a list of all blob items in the container. We'll also get a blob client in order to have access the the blob url.
+
+We'll also build the HTML which includes the <img> tags and add the blob URLs as src. Our endpoint will be updated as such:
+
+    @app.route("/")
+    def view_photos():
+        blob_items = container_client.list_blobs() # list all the blobs in the container
+    
+        img_html = ""
+    
+        for blob in blob_items:
+            blob_client = container_client.get_blob_client(blob=blob.name) # get blob client to interact with the blob and get blob url
+            img_html += "<img src='{}' width='auto' height='200'/>".format(blob_client.url) # get the blob url and append it to the html
+        
+        # return the html with the images
+        return """
+            <h1>Upload new File</h1>
+            <form method="post" action="/upload-photos" 
+                enctype="multipart/form-data">
+                <input type="file" name="photos" multiple >
+                <input type="submit">
+            </form>
+        """ + img_html
