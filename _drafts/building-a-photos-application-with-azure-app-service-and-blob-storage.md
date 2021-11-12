@@ -199,3 +199,11 @@ We'll also build the HTML which includes the <img> tags and add the blob URLs as
                 <input type="submit">
             </form>
         """ + img_html
+
+### Checkpoint: Let's verify that we can view photos in our Flask application
+
+Now that we have added the code to access the files from the application, let's check to make sure it is working! We'll go to the browser and navigate to 'localhost:5000'. This is what we should see:
+
+![](/uploads/screenshot-2021-11-11-231613.png)
+
+We can now see our images in our web application!
