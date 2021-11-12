@@ -233,4 +233,4 @@ Then, we'll change the last line of the upload_photos() function as such:
             
         return redirect('/')     
 
-This will make the application redirect to the initial page after upload.
+This will make the application redirect to the initial page after upload. 
