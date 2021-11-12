@@ -104,4 +104,16 @@ In bash/terminal, copy and paste the following and substitute **<yourconnections
 
 Restart you bash/terminal for the environment variable to take effect.
 
-#### Store Images in Blob Storage from Flask app
+#### Install the Azure Blob Storage Python package
+
+In our cmd/terminal, we'll install the Azure Blob Storage client library. This will allow us to access the Azure Blob Storage from the code.
+
+    pip install azure-storage-blob
+
+#### Store Images in Blob Storage from the Flask app
+
+In the code, we'll add the functionality to store the uploaded pictures. We'll first start by importing the Azure Blob Storage library at the top of the file.
+
+    from azure.storage.blob import BlobServiceClient
+
+In the **/upload-photos** endpoint, we'll adjust the code to add the upload logic. We'll retrieve the Azure Blob Storage connection string, which we will need to pass in to use the Azure Blob Storage client library. 
