@@ -3,6 +3,7 @@ layout: post
 title: Building a photos application in Python with Azure App Service and Blob Storage
 permalink: build-a-photos-application-with-azure-app-service-and-blob-storage
 date: 2021-11-13T01:33:00.000+00:00
+toc: true
 
 ---
 Photos are precious: they encapsulate memories, and looking at them brings joy. It makes sense to want to back them up on a web application. This would also make it easy to view and share pictures on any device, since the application would be accessible through any web browser.
