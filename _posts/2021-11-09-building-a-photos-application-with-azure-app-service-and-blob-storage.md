@@ -9,12 +9,6 @@ Photos are precious: they encapsulate memories, and looking at them brings joy. 
 
 In this blog post, we are going to build a Python web application from scratch, using the Flask framework and we will use Azure App Service and Azure Blob Storage to host our application and store our pictures. Let's get started!
 
-Table of contents:
-
-1. Create the web application
-2. Connect the web application to Blog Storage to store pictures
-3. Deploy the web application using App Service
-
 Prerequisites:
 
 * Python 3.8.5 ([https://www.python.org/downloads/](https://www.python.org/downloads/ "https://www.python.org/downloads/"))
