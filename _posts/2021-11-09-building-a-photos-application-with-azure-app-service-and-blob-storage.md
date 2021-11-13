@@ -90,13 +90,13 @@ We'll be storing the connection string as an environment variable locally,[ as i
 
 ##### Windows
 
-In cmd, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied.
+In cmd, copy and paste the following and substitute "<yourconnectionstring>" with the connection string you just copied.
 
     set AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 
 ##### Linux/macOS
 
-In bash/terminal, copy and paste the following and substitute **<yourconnectionstring>** with the connection string you just copied.
+In bash/terminal, copy and paste the following and substitute "<yourconnectionstring>" with the connection string you just copied.
 
     export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 
@@ -233,4 +233,4 @@ Then, we'll change the last line of the upload_photos() function as such:
             
         return redirect('/')     
 
-This will make the application redirect to the initial page after upload. 
+This will make the application redirect to the initial page after upload.
