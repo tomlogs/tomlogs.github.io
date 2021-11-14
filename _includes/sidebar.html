@@ -1,33 +1,22 @@
 <div class="sidebar">
     <div class="sidebar-contents">
-      <div style="height: 6em; width: 6em; padding-right: 2em;">
+      <div class="personal-picture-wrapper">
         <image src="/assets/picture.png" alt="a picture of me" class="personal-picture" />
       </div>
       <div class="sidebar-content-container">
-        <div class="title">
-          {{ site.title }}
+        <div class="title-and-social-links">
+          <div  class="title">{{ site.title }}</div>
+          <div class="social-links">
+            {%- include social_notext.html -%}
+          </div>
         </div>
         <div class="description">
           {{ site.description }}
         </div>
     
-        <div class="social-links">
-          {%- include social_notext.html -%}
-        </div>
+
         
-        <nav class="nav-links">
-          <ul class="navigation">
-            {% for link in site.navigation %}
-              {% assign current = nil %}
-              {% if page.url == link.url or page.url | split: ".html" or page.layout == link.layout %}
-                {% assign current = 'current' %}
-              {% endif %}
-              <li class="{% if forloop.first %}first{% endif %} {{ current }} {% if forloop.last %}last{% endif %}">
-                <a class="{{ current }}" href="{{ link.url }}">{{ link.text }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </nav>
+
 
     
       </div>
@@ -36,4 +25,19 @@
 
       <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
     </div>
+    <nav class="nav-links">
+      <ul class="navigation">
+        {% for link in site.navigation %}
+          {% assign current = nil %}
+          {% if page.url == link.url or page.url | split: ".html" or page.layout == link.layout %}
+            {% assign current = 'current' %}
+          {% endif %}
+          <a class="{{ current }}" href="{{ link.url }}">
+            <li class="{% if forloop.first %}first{% endif %} {{ current }} {% if forloop.last %}last{% endif %}">
+              {{ link.text }}
+            </li>
+          </a>
+        {% endfor %}
+      </ul>
+    </nav>
   </div>
