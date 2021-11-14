@@ -16,12 +16,7 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <div>
-      <h4>
-        Table of contents:
-      </h4>
-      {% include toc.html html=content h_max=3 %}
-    </div>
+      {% include toc.html html=content h_max=3 class="table-of-contents" %}
     {{ content }}
   </div>
 

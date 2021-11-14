@@ -104,7 +104,7 @@ In our cmd/terminal, we'll install the Azure Blob Storage client library. This w
 
 In the code, we'll add the functionality to store the uploaded pictures. We'll first start by importing the Azure Blob Storage library and the os package at the top of the file.
 
-{% highlight python %}  
+{% highlight python %}
 import os   
 from azure.storage.blob import BlobServiceClient  
 {% endhighlight %}
@@ -115,7 +115,7 @@ Then, we'll retrieve the Blob Service Client, which will allow us to interact wi
 
 From the Blob Service Client, we'll retrieve a Container Client, with which we will be able to store our images.
 
-{% highlight python %}  
+{% highlight python %}
 connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING') # retrieve the connection string from the environment variable
 container_name = "photos" # container name in which images will be store in the storage account
 
@@ -129,7 +129,7 @@ except Exception as e:
 
 We'll also adjust the **/upload-photos** endpoint to upload the file to the Storage Container. We wrap the call in a try block in order to catch and ignore exceptions thrown when a duplicate filename upload is attempted.
 
-{% highlight python %}   
+{% highlight python %}
 #flask endpoint to upload a photo
 @app.route("/upload-photos", methods=["POST"])
 def upload_photos():
@@ -180,7 +180,7 @@ We'll now change the "/" endpoint, in the function view_photos(). We'll use our 
 
 We'll also build the HTML which includes the <img> tags and add the blob URLs as src. Our endpoint will be updated as such:
 
-{% highlight python %}  
+{% highlight python %}
 @app.route("/")
 def view_photos():
     blob_items = container_client.list_blobs() # list all the blobs in the container
@@ -216,13 +216,13 @@ One optional improvement is to make the form redirect to the home page after upl
 
 First, we'll import the redirect package from flask
 
-{% highlight python %}  
+{% highlight python %}
 from flask import Flask, request, redirect
 {% endhighlight %}  
 
 Then, we'll change the last line of the upload_photos() function as such:
 
-{% highlight python %}  
+{% highlight python %}
 #flask endpoint to upload a photo
 @app.route("/upload-photos", methods=["POST"])
 def upload_photos():

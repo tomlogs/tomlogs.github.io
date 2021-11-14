@@ -2,6 +2,26 @@
  * Custom Styling
  */
 
+.table-of-contents {
+  border: 1px solid #dddddd;
+  padding: 1em 2em;
+  margin: 1em 0;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.table-of-contents h4 {
+  margin-top: 1em;
+}
+
+.table-of-contents a {
+  color: black;
+}
+
+.table-of-contents a:visited {
+  color: black;
+}
+
 .home-post-title {
   margin-top: 0;
 }
