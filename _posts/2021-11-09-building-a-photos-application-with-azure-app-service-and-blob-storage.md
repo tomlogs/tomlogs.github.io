@@ -115,32 +115,36 @@ Then, we'll retrieve the Blob Service Client, which will allow us to interact wi
 
 From the Blob Service Client, we'll retrieve a Container Client, with which we will be able to store our images.
 
-    connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING') # retrieve the connection string from the environment variable
-    container_name = "photos" # container name in which images will be store in the storage account
-    
-    blob_service_client = BlobServiceClient.from_connection_string(conn_str=connect_str) # create a blob service client to interact with the storage account
-    try:
-        container_client = blob_service_client.get_container_client(container=container_name) # get container client to interact with the container in which images will be stored
-        container_client.get_container_properties() # get properties of the container to force exception to be thrown if container does not exist
-    except Exception as e:
-        container_client = blob_service_client.create_container(container_name) # create a container in the storage account if it does not exist
+{% highlight python %}  
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING') # retrieve the connection string from the environment variable
+container_name = "photos" # container name in which images will be store in the storage account
+
+blob_service_client = BlobServiceClient.from_connection_string(conn_str=connect_str) # create a blob service client to interact with the storage account
+try:
+    container_client = blob_service_client.get_container_client(container=container_name) # get container client to interact with the container in which images will be stored
+    container_client.get_container_properties() # get properties of the container to force exception to be thrown if container does not exist
+except Exception as e:
+    container_client = blob_service_client.create_container(container_name) # create a container in the storage account if it does not exist
+{% endhighlight %}  
 
 We'll also adjust the **/upload-photos** endpoint to upload the file to the Storage Container. We wrap the call in a try block in order to catch and ignore exceptions thrown when a duplicate filename upload is attempted.
 
-    #flask endpoint to upload a photo
-    @app.route("/upload-photos", methods=["POST"])
-    def upload_photos():
-        filenames = ""
-    
-        for file in request.files.getlist("photos"):
-            try:
-                container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
-                filenames += file.filename + "<br /> "
-            except Exception as e:
-                print(e)
-                print("Ignoring duplicate filenames") # ignore duplicate filenames
-            
-        return "<p>Uploaded: <br />{}</p>".format(filenames)        
+{% highlight python %}   
+#flask endpoint to upload a photo
+@app.route("/upload-photos", methods=["POST"])
+def upload_photos():
+    filenames = ""
+
+    for file in request.files.getlist("photos"):
+        try:
+            container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
+            filenames += file.filename + "<br /> "
+        except Exception as e:
+            print(e)
+            print("Ignoring duplicate filenames") # ignore duplicate filenames
+        
+    return "<p>Uploaded: <br />{}</p>".format(filenames)        
+{% endhighlight %}  
 
 ### Checkpoint: Let's verify that file uploads are working
 
@@ -176,25 +180,27 @@ We'll now change the "/" endpoint, in the function view_photos(). We'll use our 
 
 We'll also build the HTML which includes the <img> tags and add the blob URLs as src. Our endpoint will be updated as such:
 
-    @app.route("/")
-    def view_photos():
-        blob_items = container_client.list_blobs() # list all the blobs in the container
+{% highlight python %}  
+@app.route("/")
+def view_photos():
+    blob_items = container_client.list_blobs() # list all the blobs in the container
+
+    img_html = ""
+
+    for blob in blob_items:
+        blob_client = container_client.get_blob_client(blob=blob.name) # get blob client to interact with the blob and get blob url
+        img_html += "<img src='{}' width='auto' height='200'/>".format(blob_client.url) # get the blob url and append it to the html
     
-        img_html = ""
-    
-        for blob in blob_items:
-            blob_client = container_client.get_blob_client(blob=blob.name) # get blob client to interact with the blob and get blob url
-            img_html += "<img src='{}' width='auto' height='200'/>".format(blob_client.url) # get the blob url and append it to the html
-        
-        # return the html with the images
-        return """
-            <h1>Upload new File</h1>
-            <form method="post" action="/upload-photos" 
-                enctype="multipart/form-data">
-                <input type="file" name="photos" multiple >
-                <input type="submit">
-            </form>
-        """ + img_html
+    # return the html with the images
+    return """
+        <h1>Upload new File</h1>
+        <form method="post" action="/upload-photos" 
+            enctype="multipart/form-data">
+            <input type="file" name="photos" multiple >
+            <input type="submit">
+        </form>
+    """ + img_html
+{% endhighlight %}  
 
 ### Checkpoint: Let's verify that we can view photos in our Flask application
 
@@ -210,23 +216,28 @@ One optional improvement is to make the form redirect to the home page after upl
 
 First, we'll import the redirect package from flask
 
-    from flask import Flask, request, redirect
+{% highlight python %}  
+from flask import Flask, request, redirect
+{% endhighlight %}  
 
 Then, we'll change the last line of the upload_photos() function as such:
 
-    #flask endpoint to upload a photo
-    @app.route("/upload-photos", methods=["POST"])
-    def upload_photos():
-        filenames = ""
-    
-        for file in request.files.getlist("photos"):
-            try:
-                container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
-                filenames += file.filename + "<br /> "
-            except Exception as e:
-                print(e)
-                print("Ignoring duplicate filenames") # ignore duplicate filenames
-            
-        return redirect('/')     
+{% highlight python %}  
+#flask endpoint to upload a photo
+@app.route("/upload-photos", methods=["POST"])
+def upload_photos():
+    filenames = ""
+
+    for file in request.files.getlist("photos"):
+        try:
+            container_client.upload_blob(file.filename, file) # upload the file to the container using the filename as the blob name
+            filenames += file.filename + "<br /> "
+        except Exception as e:
+            print(e)
+            print("Ignoring duplicate filenames") # ignore duplicate filenames
+        
+    return redirect('/')     
+{% endhighlight %}  
+
 
 This will make the application redirect to the initial page after upload.
