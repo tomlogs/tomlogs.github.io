@@ -29,7 +29,7 @@
       <ul class="navigation">
         {% for link in site.navigation %}
           {% assign current = nil %}
-          {% if page.url == link.url or page.url | split: ".html" or page.layout == link.layout %}
+          {% if page.url == link.url or page.layout == link.layout %}
             {% assign current = 'current' %}
           {% endif %}
           <a class="{{ current }}" href="{{ link.url }}">

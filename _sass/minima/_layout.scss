@@ -2,6 +2,13 @@
  * Custom Styling
  */
 
+ .navigation li {
+   padding: 0.3em 0.4em;
+
+   &.current {
+     border-bottom: 1px solid #2a7ae2;
+   }
+ }
 
 div.title-and-social-links {
   font-size: 1.2em;
