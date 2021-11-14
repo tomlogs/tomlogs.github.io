@@ -20,6 +20,48 @@ Prerequisites:
 
 We'll start off by creating a simple Flask application with an upload form. This is where we will be uploading our pictures. The first endpoint will have a "/" route.  This endpoint will return HTML with a form to upload photos. (Eventually, we will display the uploaded pictures on this page). We'll define the second endpoint as having the route "/upload-photos" and expecting a POST request.
 
+{% highlight ruby %} 
+
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route("/")
+
+def view_photos():
+
+    return '''
+
+        <h1>Upload new File</h1>
+
+        <form method="post" action="/upload-photos" 
+
+            enctype="multipart/form-data">
+
+            <input type="file" name="photos" multiple >
+
+            <input type="submit">
+
+        </form> 
+
+        '''
+
+\#flask endpoint to upload a photo
+
+@app.route("/upload-photos", methods=\["POST"\])
+
+def upload_photos():
+
+    filenames = ""
+
+    for file in request.files.getlist("photos"):
+
+        filenames += file.filename + " "
+
+    return "<p>Uploaded: {}</p>".format(filenames)
+
+{% endhighlight %}
+
     from flask import Flask, request
     
     app = Flask(__name__)
