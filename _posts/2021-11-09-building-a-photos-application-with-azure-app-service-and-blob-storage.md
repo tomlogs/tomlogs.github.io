@@ -20,8 +20,7 @@ Prerequisites:
 
 We'll start off by creating a simple Flask application with an upload form. This is where we will be uploading our pictures. The first endpoint will have a "/" route.  This endpoint will return HTML with a form to upload photos. (Eventually, we will display the uploaded pictures on this page). We'll define the second endpoint as having the route "/upload-photos" and expecting a POST request.
 
-{% highlight python %} 
-
+{% highlight python %}   
 from flask import Flask, request  
 app = Flask(__name__)  
 @app.route("/")  
@@ -40,33 +39,8 @@ def upload_photos():
     filenames = ""  
     for file in request.files.getlist("photos"):  
         filenames += file.filename + " "  
-    return "<p>Uploaded: {}</p>".format(filenames)
-
+    return "<p>Uploaded: {}</p>".format(filenames)  
 {% endhighlight %}
-
-    from flask import Flask, request
-    
-    app = Flask(__name__)
-    
-    @app.route("/")
-    def view_photos():
-        return '''
-            <h1>Upload new File</h1>
-            <form method="post" action="/upload-photos" 
-                enctype="multipart/form-data">
-                <input type="file" name="photos" multiple >
-                <input type="submit">
-            </form> 
-            '''
-    
-    #flask endpoint to upload a photo
-    @app.route("/upload-photos", methods=["POST"])
-    def upload_photos():
-        filenames = ""
-        for file in request.files.getlist("photos"):
-            filenames += file.filename + " "
-    
-        return "<p>Uploaded: {}</p>".format(filenames)        
 
 ![Web Application (left) and source code (right)](/uploads/screenshot-2021-11-08-212154.png "Form Upload for Photos")
 
@@ -130,8 +104,10 @@ In our cmd/terminal, we'll install the Azure Blob Storage client library. This w
 
 In the code, we'll add the functionality to store the uploaded pictures. We'll first start by importing the Azure Blob Storage library and the os package at the top of the file.
 
-    import os
-    from azure.storage.blob import BlobServiceClient
+{% highlight python %}  
+import os   
+from azure.storage.blob import BlobServiceClient  
+{% endhighlight %}
 
 We'll retrieve the Azure Blob Storage connection string from the environment variables, which we will need to pass in to use the Azure Blob Storage client library. We'll also set a container name.
 
