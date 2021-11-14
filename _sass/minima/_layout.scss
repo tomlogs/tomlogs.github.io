@@ -2,6 +2,10 @@
  * Custom Styling
  */
 
+html {
+  overflow-y: scroll;
+}
+
 .table-of-contents {
   border: 1px solid #dddddd;
   padding: 1em 2em;
@@ -94,7 +98,10 @@
     display: flex;
   }
 
-    
+  .post-list {
+    max-width: calc(80em - 16em - 16em - 2em - 2em);
+  }  
+
   .post {
     max-width: calc(80em - 16em - 16em - 2em - 2em);
   }
