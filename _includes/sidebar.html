@@ -1,11 +1,11 @@
 <div class="sidebar">
     <div class="sidebar-contents">
       <div class="personal-picture-wrapper">
-        <image src="/assets/picture.png" alt="a picture of me" class="personal-picture" />
+        <a href="/"><image src="/assets/picture.png" alt="a picture of me" class="personal-picture" /></a>
       </div>
       <div class="sidebar-content-container">
         <div class="title-and-social-links">
-          <div  class="title">{{ site.title }}</div>
+          <a href="/" class="title-link"><div  class="title">{{ site.title }}</div></a>
           <div class="social-links">
             {%- include social_notext.html -%}
           </div>

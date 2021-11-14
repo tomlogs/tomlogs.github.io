@@ -2,6 +2,11 @@
  * Custom Styling
  */
 
+
+ .title-link:hover {
+   text-decoration: none;
+ }
+
  .navigation li {
    padding: 0.3em 0.4em;
    width: 3em;
@@ -9,6 +14,11 @@
    &.current {
      border-bottom: 1px solid #2a7ae2;
    }
+
+ }
+
+ .navigation a:hover {
+  text-decoration: none;
  }
 
 div.title-and-social-links {
@@ -108,6 +118,10 @@ html {
 }
 
 @media only screen and (max-width: 1000px) {
+  main.page-content {
+    padding: 2em 0;
+  }
+
   .sidebar-contents {
     display:flex;
   }
@@ -156,6 +170,7 @@ html {
 }
 
 @media only screen and (min-width: 1000px) {
+  
   .home {
     display: flex;
   }
@@ -439,6 +454,10 @@ html {
 
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
+  }
+
+  @include media-query($on-palm) {
+    @include relative-font-size(1.875);
   }
 }
 
