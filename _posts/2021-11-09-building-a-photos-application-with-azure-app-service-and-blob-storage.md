@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a photos application in Python Flask with Azure and Blob Storage
+title: Building a photos application in Python Flask with Azure Blob Storage
 permalink: build-a-photos-application-with-azure-blob-storage
 date: 2021-11-13T01:33:00.000+00:00
 
