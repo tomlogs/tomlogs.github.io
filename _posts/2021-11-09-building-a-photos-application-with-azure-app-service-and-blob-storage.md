@@ -5,6 +5,8 @@ permalink: build-a-photos-application-with-azure-app-service-and-blob-storage
 date: 2021-11-13T01:33:00.000+00:00
 
 ---
+![](../uploads/2021-11-14-21-17-10.png)
+
 Photos are precious: they encapsulate memories, and looking at them brings joy. It makes sense to want to back them up on a web application. This would also make it easy to view and share pictures on any device, since the application would be accessible through any web browser.
 
 In this blog post, we are going to build a Python web application from scratch, using the Flask framework and we will use Azure App Service and Azure Blob Storage to host our application and store our pictures. Let's get started!
@@ -246,3 +248,63 @@ def upload_photos():
 ```
 
 This will make the application redirect to the initial page after upload.
+
+## Part 3: Styling! [Optional]
+
+We have completed all the functionality of our Photos Application! But adding some styling would help bring the whole app together, and it's never been easier now that so many frontend styling frameworks exist.
+
+For this project, we'll leverage the Bootstrap framework. We'll import the Bootstrap package, add a navbar and add some styling to the form and photos. The "view_photos()" function will be changed to the following.
+
+``` python 
+@app.route("/")
+def view_photos():
+    blob_items = container_client.list_blobs() # list all the blobs in the container
+
+    img_html = "<div style='display: flex; justify-content: space-between; flex-wrap: wrap;'>"
+
+    for blob in blob_items:
+        blob_client = container_client.get_blob_client(blob=blob.name) # get blob client to interact with the blob and get blob url
+        img_html += "<img src='{}' width='auto' height='200' style='margin: 0.5em 0;'/>".format(blob_client.url) # get the blob url and append it to the html
+    
+    img_html += "</div>"
+
+    # return the html with the images
+    return """
+    <head>
+    <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">Photos App</a>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="card" style="margin: 1em 0; padding: 1em 0 0 0; align-items: center;">
+                <h3>Upload new File</h3>
+                <div class="form-group">
+                    <form method="post" action="/upload-photos" 
+                        enctype="multipart/form-data">
+                        <div style="display: flex;">
+                            <input type="file" accept=".png, .jpeg, .jpg, .gif" name="photos" multiple class="form-control" style="margin-right: 1em;">
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        
+    """ + img_html + "</div></body>"
+```
+
+While it would make sense to create a separate HTML file and use CSS files, I've decided to leave everything within this HTML string for the purpose of simplicity for this tutorial. If you want to extend this project, I highly recommend you do so. 
+
+Now, our project should look like this:
+
+![](../uploads/2021-11-14-21-17-10.png)
+
+## Conclusion
+
+Congratulations! We've successfully reached the end of this tutorial. We've built a photos application that accepts photo uploads and displays our photos. We've used Azure Blob Storage to store our pictures and displayed them within our Flask application. 
+
+In a future blog post, we'll deploy this application using App Service so that it can be accessed to anyone over the Internet.
