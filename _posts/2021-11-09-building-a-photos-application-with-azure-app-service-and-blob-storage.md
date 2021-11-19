@@ -36,7 +36,7 @@ def view_photos():
         </form>   
         '''  
 #flask endpoint to upload a photo  
-@app.route("/upload-photos", methods=\["POST"\])  
+@app.route("/upload-photos", methods=["POST"])  
 def upload_photos():  
     filenames = ""  
     for file in request.files.getlist("photos"):  
