@@ -5,7 +5,9 @@ permalink: build-a-photos-application-with-azure-blob-storage
 date: 2021-11-13T01:33:00.000+00:00
 
 ---
-![](../uploads/2021-11-14-21-17-10.png)
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+<iframe style="position:absolute; left: 0; top: 0; width:100%; height:100%;" src="https://www.youtube.com/embed/wToHU8Hts9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 Photos are precious: they encapsulate memories, and looking at them brings joy. It makes sense to want to back them up on a web application. This would also make it easy to view and share pictures on any device, since the application would be accessible through any web browser.
 
